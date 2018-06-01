@@ -89,6 +89,10 @@ class App extends Component {
       this.setState({ changingNick: true });
       return;
     }
+    const nickMatches = this.webrtc.getPeers().filter((p) => p.nick === this.state.nick);
+    if (nickMatches.length > 0) {
+      return;
+    }
     this.webrtc.shout('changeNick', this.state.nick);
     this.setState({ changingNick: false });
     this.appendChat({

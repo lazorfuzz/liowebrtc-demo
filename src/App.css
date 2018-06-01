@@ -55,9 +55,9 @@ a:hover, .changeNick:hover {
 
 .messageBox {
   width: 800px;
-  max-width: 90%;
+  max-width: 85%;
   height: 300px;
-  max-height: 35vh;
+  max-height: 32vh;
   border: 1px solid #333;
   border-radius: 10px;
   margin: 0 0 1em 0;
@@ -91,8 +91,8 @@ a:hover, .changeNick:hover {
 }
 
 .textBox {
-  width: 80%;
-  max-width: 80%;
+  width: 100%;
+  max-width: 100%;
   border: none;
   border-radius: 5px;
   padding: 10px;

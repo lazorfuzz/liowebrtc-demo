@@ -150,11 +150,12 @@ class App extends Component {
             <a className="github-button" href="https://github.com/lazorfuzz/liowebrtc" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star lazorfuzz/liowebrtc on GitHub">Star LioWebRTC on GitHub</a></p>
         </div>
         <div className="msgBoxTop">
-          <a
+          <p
             className="changeNick"
-            href="#nick"
             onClick={this.handleNickChange}
-            ><p>Change Nick</p></a>
+            >
+              Change Nick
+          </p>
           <p className="peerCount">There {this.state.peerCount > 1 ? 'are' : 'is'} {this.state.peerCount} {this.state.peerCount > 1 ? 'people' : 'person'} in the room.</p>
         </div>
         <div

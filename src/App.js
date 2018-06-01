@@ -101,7 +101,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="header">
-          <h1>Demo Chat Room with LioWebRTC</h1>
+          <h1>P2P Chat Room using LioWebRTC</h1>
           <p>Open the window in another tab, or send this link to a friend. Open dev tools to see the logging.
             To view the source code for this demo, <a href="https://github.com/lazorfuzz/liowebrtc-demo" target="_blank" rel="noopener noreferrer">click here</a>. This app is powered by <a href="https://github.com/lazorfuzz/liowebrtc" target="_blank" rel="noopener noreferrer">LioWebRTC</a>.</p>
           <p className="peerCount">There {this.state.peerCount > 1 ? 'are' : 'is'} {this.state.peerCount} {this.state.peerCount > 1 ? 'people' : 'person'} in the room.</p>

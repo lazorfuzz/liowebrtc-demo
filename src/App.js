@@ -19,20 +19,18 @@ class App extends Component {
       debug: true,
       dataOnly: true,
       url: 'https://sandbox.simplewebrtc.com:443/',
-      nick: this.state.nick,
+      nick: this.state.nick
     });
 
     this.textBox.focus();
 
-    this.webrtc.on('readyToCall', () => {
-      this.webrtc.joinRoom(this.state.room);
-    });
+    this.webrtc.on('readyToCall', () => this.webrtc.joinRoom(this.state.room));
     this.webrtc.on('createdPeer', this.handlePeerCreated);
-    this.webrtc.on('iceConnectionStateChange', this.updateCount);
+    this.webrtc.on('iceConnectionStateChange', this.handleUpdateCount);
     this.webrtc.on('receivedPeerData', this.handleDataReceived);
   }
 
-  updateCount = () => {
+  handleUpdateCount = () => {
     const newCount = this.webrtc.getPeers().length + 1;
     if (this.state.peerCount > newCount) {
       this.appendChat({
@@ -61,6 +59,7 @@ class App extends Component {
   }
 
   handleSend = () => {
+    this.msgBox.scrollTop = this.msgBox.scrollHeight;
     if (this.state.message.length === 0) return;
     const chatObj = {
       username: this.state.nick,
@@ -74,6 +73,7 @@ class App extends Component {
   }
 
   appendChat = (chatObj) => {
+    this.msgBox.scrollTop = this.msgBox.scrollHeight;
     this.setState({
       chatLog: [...this.state.chatLog, chatObj]
     });
@@ -101,17 +101,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className="header">
-          <h1>P2P Chat Room using LioWebRTC</h1>
-          <p>Open the window in another tab, or send this link to a friend. Open dev tools to see the logging.
+          <h1>P2P Chatroom Demo Using LioWebRTC</h1>
+          <p>To demo this app, open this page in another tab, or send this page to a friend. Open dev tools to see the logging.
             To view the source code for this demo, <a href="https://github.com/lazorfuzz/liowebrtc-demo" target="_blank" rel="noopener noreferrer">click here</a>. This app is powered by <a href="https://github.com/lazorfuzz/liowebrtc" target="_blank" rel="noopener noreferrer">LioWebRTC</a>.</p>
           <p className="peerCount">There {this.state.peerCount > 1 ? 'are' : 'is'} {this.state.peerCount} {this.state.peerCount > 1 ? 'people' : 'person'} in the room.</p>
         </div>
-        <div className="messageBox">
+        <div
+          className="messageBox"
+          ref={(el) => this.msgBox = el}
+          >
           {this.generateChats()}
-          <li
-            className="msgEnd"
-            ref={(el) => this.msgEnd = el}
-          />
+          <div className="msgEnd" />
         </div>
         <div className="controls">
           <input

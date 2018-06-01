@@ -1,0 +1,84 @@
+html {
+  background-color: #424849;
+  color: #d3efff;
+}
+
+input:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: #ffa856;
+}
+
+a:hover {
+  color: #ffb36d;
+}
+
+.App {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+}
+
+.header {
+  color: white;
+  text-align: center;
+  max-width: 800px;
+  line-height: 30px;
+}
+
+.peerCount {
+  margin-top: 40px;
+}
+
+.messageBox {
+  width: 800px;
+  max-width: 90%;
+  height: 300px;
+  max-height: 60vh;
+  border: 1px solid #333;
+  border-radius: 10px;
+  margin: 0 0 1em 0;
+  padding: 5px 10px;
+  font-size: 18px;
+  overflow-y: scroll;
+  word-wrap: break-word;
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.chatItem, .msgEnd {
+  list-style: none;
+}
+
+.msgEnd {
+  float: left;
+  clear: both;
+}
+
+.chatUserName {
+  color: white;
+}
+
+.controls {
+  flex-flow: row;
+  width: 800px;
+  max-width: 90%;
+}
+
+.textBox {
+  width: 800px;
+  max-width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 1em 1em -10px;
+  line-height: 24px;
+  font-size: 18px;
+  background-color: transparent;
+  color: #d3efff;
+}

@@ -144,13 +144,15 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <h1>P2P Chatroom Demo</h1>
-          <p>To demo this app, open this page in another tab, or send this page to a friend. Open dev tools to see the logging.
-            To view the source code for this demo, <a href="https://github.com/lazorfuzz/liowebrtc-demo" target="_blank" rel="noopener noreferrer">click here</a>. This app is powered by <a href="https://github.com/lazorfuzz/liowebrtc" target="_blank" rel="noopener noreferrer">LioWebRTC</a>.</p>
+          <p>To try this out, open this page in another tab, or send this page to a friend. Open dev tools to see the logging.
+            To view the source code for this app, <a href="https://github.com/lazorfuzz/liowebrtc-demo" target="_blank" rel="noopener noreferrer">click here</a>. This app is powered by <a href="https://github.com/lazorfuzz/liowebrtc" target="_blank" rel="noopener noreferrer">LioWebRTC</a>.
+            <br /><br />
+            <a className="github-button" href="https://github.com/lazorfuzz/liowebrtc" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star lazorfuzz/liowebrtc on GitHub">Star LioWebRTC on GitHub</a></p>
         </div>
         <div className="msgBoxTop">
           <a
             className="changeNick"
-            href="#"
+            href="#nick"
             onClick={this.handleNickChange}
             ><p>Change Nick</p></a>
           <p className="peerCount">There {this.state.peerCount > 1 ? 'are' : 'is'} {this.state.peerCount} {this.state.peerCount > 1 ? 'people' : 'person'} in the room.</p>

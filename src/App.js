@@ -10,7 +10,8 @@ class App extends Component {
       nick: `Anon${Math.floor(Math.random() * 99999)}`,
       message: '',
       chatLog: [],
-      peerCount: 1
+      peerCount: 1,
+      scrollHeight: null
     };
   }
 
@@ -23,6 +24,7 @@ class App extends Component {
     });
 
     this.textBox.focus();
+    this.handleScroll();
 
     this.webrtc.on('readyToCall', () => this.webrtc.joinRoom(this.state.room));
     this.webrtc.on('createdPeer', this.handlePeerCreated);
@@ -75,8 +77,21 @@ class App extends Component {
   appendChat = (chatObj) => {
     this.msgBox.scrollTop = this.msgBox.scrollHeight;
     this.setState({
-      chatLog: [...this.state.chatLog, chatObj]
+      chatLog: [...this.state.chatLog, chatObj],
+      scrollHeight: this.msgBox.scrollHeight
     });
+  }
+
+  handleScroll = () => {
+    setInterval(() => {
+      const sh = this.msgBox.scrollHeight;
+      if (this.state.scrollHeight !== sh) {
+        this.msgBox.scrollTop = this.msgBox.scrollHeight;
+        this.setState({
+          scrollHeight: this.msgBox.scrollHeight
+        });
+      }
+    }, 50);
   }
 
   generateChats = () => this.state.chatLog.map((chat, idx) => {
@@ -111,7 +126,6 @@ class App extends Component {
           ref={(el) => this.msgBox = el}
           >
           {this.generateChats()}
-          <div className="msgEnd" />
         </div>
         <div className="controls">
           <input

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LioWebRTC from 'liowebrtc';
+import Modal from 'react-responsive-modal';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +12,8 @@ class App extends Component {
       message: '',
       chatLog: [],
       peerCount: 1,
-      scrollHeight: null
+      scrollHeight: null,
+      changingNick: false
     };
   }
 
@@ -53,10 +55,18 @@ class App extends Component {
   handleDataReceived = (type, data, peer) => {
     switch (type) {
       case 'chat':
-        this.setState({ chatLog: [...this.state.chatLog, data]});
-      break;
+        this.appendChat(data);
+        break;
+      case 'changeNick':
+        const oldNick = peer.nick;
+        peer.nick = data;
+        this.appendChat({
+          notification: true,
+          payload: `${oldNick} changed their nickname to ${data}`
+        });
+        break;
       default:
-      break;
+        break;
     }
   }
 
@@ -71,6 +81,19 @@ class App extends Component {
     this.setState({
       chatLog: [...this.state.chatLog, chatObj],
       message: ''
+    });
+  }
+
+  handleNickChange = () => {
+    if (!this.state.changingNick) {
+      this.setState({ changingNick: true });
+      return;
+    }
+    this.webrtc.shout('changeNick', this.state.nick);
+    this.setState({ changingNick: false });
+    this.appendChat({
+      notification: true,
+      payload: `You changed your nickname to ${this.state.nick}`
     });
   }
 
@@ -116,9 +139,16 @@ class App extends Component {
     return (
       <div className="App">
         <div className="header">
-          <h1>P2P Chatroom Demo Using LioWebRTC</h1>
+          <h1>P2P Chatroom Demo</h1>
           <p>To demo this app, open this page in another tab, or send this page to a friend. Open dev tools to see the logging.
             To view the source code for this demo, <a href="https://github.com/lazorfuzz/liowebrtc-demo" target="_blank" rel="noopener noreferrer">click here</a>. This app is powered by <a href="https://github.com/lazorfuzz/liowebrtc" target="_blank" rel="noopener noreferrer">LioWebRTC</a>.</p>
+        </div>
+        <div className="msgBoxTop">
+          <a
+            className="changeNick"
+            href="#"
+            onClick={this.handleNickChange}
+            ><p>Change Nick</p></a>
           <p className="peerCount">There {this.state.peerCount > 1 ? 'are' : 'is'} {this.state.peerCount} {this.state.peerCount > 1 ? 'people' : 'person'} in the room.</p>
         </div>
         <div
@@ -144,6 +174,28 @@ class App extends Component {
             }}
           />
         </div>
+
+        <Modal
+          classNames={{ overlay: 'overlay', modal: 'modal' }}
+          open={this.state.changingNick}
+          onClose={() => this.setState({ changingNick: false })}
+          center
+          >
+          <h3>Change Your Nickname</h3>
+          <input
+            type="text"
+            className="nickBox"
+            onChange={(evt) => {
+              this.setState({ nick: evt.target.value });
+            }}
+            value={this.state.nick}
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                this.handleNickChange();
+              }
+            }}
+          />
+        </Modal>
       </div>
     );
   }

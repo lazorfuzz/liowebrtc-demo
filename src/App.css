@@ -31,24 +31,38 @@ a:hover {
   line-height: 30px;
 }
 
+.changeNick {
+  font-size: 13px;
+  line-height: 1px;
+}
+
 .peerCount {
-  margin-top: 40px;
-  margin-bottom: 0;
   text-align: right;
   font-size: 13px;
+  line-height: 1px;
+}
+
+.msgBoxTop {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 800px;
+  max-width: 90%;
+  margin: 40px 0 0 0;
+  align-items: flex-end;
 }
 
 .messageBox {
   width: 800px;
   max-width: 90%;
   height: 300px;
-  max-height: 60vh;
+  max-height: 35vh;
   border: 1px solid #333;
   border-radius: 10px;
   margin: 0 0 1em 0;
   padding: 5px 10px 0 20px;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 24px;
   overflow-y: auto;
   word-wrap: break-word;
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
@@ -76,8 +90,8 @@ a:hover {
 }
 
 .textBox {
-  width: 800px;
-  max-width: 100%;
+  width: 80%;
+  max-width: 80%;
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -86,4 +100,37 @@ a:hover {
   font-size: 18px;
   background-color: transparent;
   color: #d3efff;
+}
+
+.nickBtn:hover {
+  background: #ffb36d;
+}
+
+.nickBox {
+  line-height: 20px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #d3efff;
+  width: 300px;
+  max-width: 80%;
+  border: none;
+  border-bottom: 1px solid #d3efff;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.modal {
+  font-weight: lighter;
+  background-color: #444b4c;
+  width: 600px;
+  max-width: 90%;
+}
+
+.modal h3 {
+  font-weight: lighter;
+  color: white;
 }

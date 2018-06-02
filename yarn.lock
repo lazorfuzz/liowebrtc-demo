@@ -4293,9 +4293,9 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-liowebrtc@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/liowebrtc/-/liowebrtc-0.1.7.tgz#1a5e671b6b0337d72f3d5b085ac5507b903c204d"
+liowebrtc@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/liowebrtc/-/liowebrtc-0.1.10.tgz#65f778e1dd59fad23d51e8c8b45cbde360d828e0"
   dependencies:
     attachmediastream "^2.0.0"
     filetransfer "^2.0.4"

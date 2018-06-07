@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "liowebrtc": "^0.1.10",
+    "liowebrtc": "^0.1.13",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-responsive-modal": "^3.0.2",

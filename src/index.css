@@ -1,5 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  background-image: url("https://www.transparenttextures.com/patterns/cross-stripes.png");
 }

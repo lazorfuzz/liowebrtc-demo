@@ -160,9 +160,7 @@ class App extends Component {
     }, 1000)
   }
 
-  removeTyper = (nick) => {
-    this.setState({ typers: this.state.typers.filter((t) => t !== nick) });
-  }
+  removeTyper = (nick) => this.setState({ typers: this.state.typers.filter((t) => t !== nick) });
 
   generateChats = () => this.state.chatLog.map((chat, idx) => {
     return (

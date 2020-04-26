@@ -24,7 +24,7 @@ class App extends Component {
     this.webrtc = new LioWebRTC({
       debug: true,
       dataOnly: true,
-      url: 'https://sandbox.simplewebrtc.com:443/',
+      url: 'https://rtcmulticonnection.herokuapp.com:443/',
       nick: this.state.nick
     });
 
